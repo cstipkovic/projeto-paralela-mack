@@ -1,12 +1,6 @@
-/**
- * Bucket Sort Lib
- * bucket-sort.h
- *
- * Code Reference: http://lspd.mackenzie.br/marathon/12/problemset.pdf
- * */
 #include <stdlib.h>
 #include <string.h>
-#include "bucket-sort.h"
+#include "bucketsort.h"
 
 #define N_BUCKETS 94
 
