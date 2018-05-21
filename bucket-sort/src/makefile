@@ -1,6 +1,7 @@
 FLAGS=-O3
 
 CC=gcc-7
+#CC=icc
 
 RM=rm -f
 
@@ -17,4 +18,5 @@ run:
 	./$(EXEC)
 
 clean:
+	$(RM) $(EXEC).h.gch
 	$(RM) main.o $(EXEC).o $(EXEC)
