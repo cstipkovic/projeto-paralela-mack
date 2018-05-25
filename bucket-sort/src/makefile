@@ -1,11 +1,11 @@
 FLAGS=-O3
 
-CC=gcc-7
 #CC=icc
+CC=gcc-7
 
 RM=rm -f
 
-EXEC=bucket-sort
+EXEC=bucketsort
 
 all: $(EXEC)
 
@@ -18,5 +18,4 @@ run:
 	./$(EXEC)
 
 clean:
-	$(RM) $(EXEC).h.gch
 	$(RM) main.o $(EXEC).o $(EXEC)
