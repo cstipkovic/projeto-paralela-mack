@@ -4,44 +4,46 @@
 
 #define LENGTH 8
 
-FILE *fin, *fout;
+FILE *fileIn, *fileOut;
 
 char *strings;
 long int N;
 
-void openfiles() {
-	fin = fopen("bucketsort.in", "r+");
-	if (fin == NULL) {
+void openFiles() {
+	fileIn = fopen("bucketsort.in", "r+");
+	printf("%s\n", fileIn);
+	if (fileIn == NULL) {
 		perror("fopen fin");
 		exit(EXIT_FAILURE);
 	}
 
-	fout = fopen("bucketsort.out", "w");
-	if (fout == NULL) {
+	fileOut = fopen("bucketsort.out", "w");
+	if (fileOut == NULL) {
 		perror("fopen fout");
 		exit(EXIT_FAILURE);
 	}
 }
 
-void closefiles(void) {
-	fclose(fin);
-	fclose(fout);
+void closeFiles(void) {
+	fclose(fileIn);
+	fclose(fileOut);
 }
 
 int main(int argc, char* argv[]) {
 	long int i, *r;
 
-	openfiles();
+	openFiles();
 
-	fscanf(fin, "%ld", &N);
+	fscanf(fileIn, "%ld", &N);
 	strings = (char*) malloc(N * LENGTH);
 	if (strings == NULL) {
 		perror("malloc strings");
 		exit(EXIT_FAILURE);
 	}
 
-	for (i = 0; i < N; i++)
-		fscanf(fin, "%s", strings + (i * LENGTH));
+	for (i = 0; i < N; i++) {
+		fscanf(fileIn, "%s", strings + (i * LENGTH));
+	}
 
 	fflush(stdout);
 
@@ -49,12 +51,14 @@ int main(int argc, char* argv[]) {
 
 	fflush(stdout);
 
-	for (i = 0; i < N; i++)
-		fprintf(fout, "%s\n", strings + (r[i] * LENGTH));
-
-	free(r);
+	for (i = 0; i < N; i++) {
+		fprintf(fileOut, "%s\n", strings + (r[i] * LENGTH));
+	}
+	
+		free(r);
 	free(strings);
-	closefiles();
+	closeFiles();
 
 	return EXIT_SUCCESS;
 }
+
